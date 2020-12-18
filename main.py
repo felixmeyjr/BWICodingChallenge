@@ -59,19 +59,26 @@ hardware = {"Notebook Büro 13": [205, 2451, 40], "Notebook Büro 14": [420, 297
             "Tablet Büro klein": [620, 1405, 40], "Tablet Büro groß": [250, 1455, 40],
             "Tablet outdoor klein": [540, 1690, 45], "Tablet outdoor groß": [370, 1980, 68]}
 
+products = {"Notebook Büro 13": {"necc_units": 205, "weight": 2451, "value": 40},
+            "Notebook Büro 14": {"necc_units": 420, "weight": 2978, "value": 35},
+            "Notebook outdoor": {"necc_units": 450, "weight": 3625, "value": 80},
+            "Mobiltelefon Büro": {"necc_units": 60, "weight": 717, "value": 30},
+            "Mobiltelefon Outdoor": {"necc_units": 157, "weight": 988, "value": 60},
+            "Mobiltelefon Heavy Duty": {"necc_units": 220, "weight": 1220, "value": 65},
+            "Tablet Büro klein": {"necc_units": 620, "weight": 1405, "value": 40},
+            "Tablet Büro groß": {"necc_units": 250, "weight": 1455, "value": 40},
+            "Tablet outdoor klein": {"necc_units": 540, "weight": 1690, "value": 45},
+            "Tablet outdoor groß": {"necc_units": 370, "weight": 1980, "value": 68}}
+
 # Press the green button in the gutter to run the script.
 if __name__ == '__main__':
+    products = optimization.ys_add_rel_value(products)
+    products = optimization.ys_sort_dict(products)
+    truck_load = optimization.ys_load_truck(products, max_cap)
 
     # Get the relatives value (value/weight)
-    rel_val = optimization.sorted_relative_value(weights, values)
+    # rel_val = optimization.sorted_relative_value(weights, values)
 
-    optimization.push_items_on_car(max_cap, weight_of_driver, rel_val, hardware)
-
-
-    print(hardware["Notebook Büro 13"][0])
-    print(type(hardware))  # prints hardware type (dict)
-    print(hardware.keys())  # prints all hardware names
-    #for key, list in hardware:  #todo funktioniert nicht, da value aus einer list besteht
-
+    # optimization.push_items_on_car(max_cap, weight_of_driver, rel_val, hardware)
 
     # Add the best rel values to the first transport car until the capacity is 100%

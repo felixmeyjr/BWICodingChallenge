@@ -57,31 +57,26 @@ def push_items_on_car(load_cap, driver_weight, rel_values, hardware):
         # Update all dicts by removing item i
 
 
+def ys_add_rel_value(products):
+    for key, value in products.items():
+        products[key].update({'rel_value': value["value"] / value["weight"]})
+    return products
 
-import numpy as np
+
+def ys_sort_dict(products):
+    return sorted(products.items(), key=lambda item: item[1]['rel_value'])
 
 
-# import gurobipy as gp # todo @yannik ich kann kein Gurobi ausführen. Hab keine Lizenz
-# from gurobipy import GRB
-#
-# def gurobi_solver():
-#     try:
-#
-#         # Create model
-#         m = gp.Model("LIP")
-#
-#         # Create variables
-#
-#         # Objective function
-#
-#         # Constraints
-#
-#         # Optimization
-#         m.optimize()
-#
-#     # Error handling
-#     except gp.GurobiError as e:
-#         print('Error code ' + str(e.errno) + ": " + str(e))
-#
-#     except AttributeError:
-#         print('Encountered an attribute error')
+def ys_load_truck(products, load_cap):
+    truck_load = {}
+    curr_load = 0  #todo add weight of driver
+    for key, value in products:
+        load = value["necc_units"] * value["weight"]
+        if curr_load + load <= load_cap:
+            print("Fill in!")
+            truck_load.update({key: value["value"]})
+        else:
+            print("Truck is full!")
+            #todo how much of this unit fits the truck
+            return truck_load
+    return truck_load
