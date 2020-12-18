@@ -57,6 +57,6 @@ values = {"Notebook Büro 13": 40, "Notebook Büro 14": 35, "Notebook outdoor": 
 if __name__ == '__main__':
 
     # Get the relatives value (value/weight)
-    optimization.sorted_relative_value(weights, values)
+    print(optimization.sorted_relative_value(weights, values))
 
     # Add the best rel values to the first transport car until the capacity is 100%
