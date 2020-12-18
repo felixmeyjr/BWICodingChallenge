@@ -33,9 +33,11 @@ def push_items_on_car(load_cap, driver_weight, rel_values, necc_units, weights, 
     :param rel_values: sorted dict with relative values (values/ weight)
     :return: items on car todo as dict?
     """
+
+
     # Track current capacity
     curr_load = 0
-    current_load = {}
+    current_load = {} # {"telefon" :
 
     # backup
     bRelvalues = rel_values
@@ -49,10 +51,11 @@ def push_items_on_car(load_cap, driver_weight, rel_values, necc_units, weights, 
 
         # Update load dict with with necc. units of i
 
-        # add weight of units i to current load
+        # add weight of units i to current load (necc_units * weight)
 
         # Update all dicts by removing item i
         pass
+
 
 
 

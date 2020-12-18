@@ -53,10 +53,17 @@ values = {"Notebook Büro 13": 40, "Notebook Büro 14": 35, "Notebook outdoor": 
             "Tablet Büro klein": 40, "Tablet Büro groß": 40,
             "Tablet outdoor klein": 45, "Tablet outdoor groß": 68}
 
+hardware = {"Notebook Büro 13": [205, 2451, 40], "Notebook Büro 14": 420, "Notebook outdoor": 450,
+              "Mobiltelefon Büro": 60, "Mobiltelefon Outdoor": 157, "Mobiltelefon Heavy Duty": 220,
+              "Tablet Büro klein": 620, "Tablet Büro groß": 250,
+              "Tablet outdoor klein": 540, "Tablet outdoor groß": 370}
+
 # Press the green button in the gutter to run the script.
 if __name__ == '__main__':
 
     # Get the relatives value (value/weight)
     print(optimization.sorted_relative_value(weights, values))
+
+    print(hardware["Notebook Büro 13"][0])
 
     # Add the best rel values to the first transport car until the capacity is 100%
