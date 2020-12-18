@@ -36,7 +36,6 @@ max_cap = 1100000
 # todo matrix/ numpy array?
 hardware = np.array(["Notebook Büro 13", 205, 2451, 40], ["Notebook Büro 14", 420, 2978, 35],
                     ["Notebook outdoor", 450, 3625, 80], ["Mobiltelefon Büro", 60, 717, 30], [], [], [], [], [], [])
-"""
 
 necc_units = {"Notebook Büro 13": 205, "Notebook Büro 14": 420, "Notebook outdoor": 450,
               "Mobiltelefon Büro": 60, "Mobiltelefon Outdoor": 157, "Mobiltelefon Heavy Duty": 220,
@@ -52,18 +51,24 @@ values = {"Notebook Büro 13": 40, "Notebook Büro 14": 35, "Notebook outdoor": 
             "Mobiltelefon Büro": 30, "Mobiltelefon Outdoor": 60, "Mobiltelefon Heavy Duty": 65,
             "Tablet Büro klein": 40, "Tablet Büro groß": 40,
             "Tablet outdoor klein": 45, "Tablet outdoor groß": 68}
+"""
 
-hardware = {"Notebook Büro 13": [205, 2451, 40], "Notebook Büro 14": 420, "Notebook outdoor": 450,
-              "Mobiltelefon Büro": 60, "Mobiltelefon Outdoor": 157, "Mobiltelefon Heavy Duty": 220,
-              "Tablet Büro klein": 620, "Tablet Büro groß": 250,
-              "Tablet outdoor klein": 540, "Tablet outdoor groß": 370}
+hardware = {"Notebook Büro 13": [205, 2451, 40], "Notebook Büro 14": [420, 2978, 35],
+            "Notebook outdoor": [450, 3625, 80], "Mobiltelefon Büro": [60, 717, 30],
+            "Mobiltelefon Outdoor": [157, 988, 60], "Mobiltelefon Heavy Duty": [220, 1220, 65],
+            "Tablet Büro klein": [620, 1405, 40], "Tablet Büro groß": [250, 1455, 40],
+            "Tablet outdoor klein": [540, 1690, 45], "Tablet outdoor groß": [370, 1980, 68]}
 
 # Press the green button in the gutter to run the script.
 if __name__ == '__main__':
 
     # Get the relatives value (value/weight)
-    print(optimization.sorted_relative_value(weights, values))
+    #print(optimization.sorted_relative_value(weights, values))
+
 
     print(hardware["Notebook Büro 13"][0])
+    print(type(hardware))  # prints hardware type (dict)
+    print(hardware.keys())  # prints all hardware names
+    #for key, list in hardware:  #todo funktioniert nicht, da value aus einer list besteht
 
     # Add the best rel values to the first transport car until the capacity is 100%

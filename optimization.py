@@ -56,7 +56,31 @@ def push_items_on_car(load_cap, driver_weight, rel_values, necc_units, weights, 
         # Update all dicts by removing item i
         pass
 
+import numpy as np
+import gurobipy as gp
+from gurobipy import GRB
 
+def gurobi_solver():
+    try:
+
+        # Create model
+        m = gp.Model("LIP")
+
+        # Create variables
+
+        # Objective function
+
+        # Constraints
+
+        # Optimization
+        m.optimize()
+
+    # Error handling
+    except gp.GurobiError as e:
+        print('Error code ' + str(e.errno) + ": " + str(e))
+
+    except AttributeError:
+        print('Encountered an attribute error')
 
 
 
