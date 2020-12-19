@@ -64,19 +64,49 @@ def ys_add_rel_value(products):
 
 
 def ys_sort_dict(products):
-    return sorted(products.items(), key=lambda item: item[1]['rel_value'])
+    return sorted(products.items(), key=lambda item: item[1]['rel_value'], reverse=True)
 
 
-def ys_load_truck(products, load_cap):
-    truck_load = {}
-    curr_load = 0  #todo add weight of driver
-    for key, value in products:
-        load = value["necc_units"] * value["weight"]
-        if curr_load + load <= load_cap:
-            print("Fill in!")
-            truck_load.update({key: value["value"]})
+def ys_load_truck(products, load_cap, driver_weight):
+    for truck_num in range(len(driver_weight)):
+        print("\nLoad truck No.", truck_num)
+        trucks = []
+        truck_load = {"Total value": 0, "Weight capacity": load_cap, "actual weight": driver_weight[truck_num], "Driver weight": driver_weight[truck_num]}
+        for key, value in products:
+            if value["necc_units"] <= 0:
+                print("No units of", key, "available.")
+                continue
+            load = value["necc_units"] * value["weight"]
+            if truck_load["actual weight"] + load <= load_cap:
+                print("Fill all ", value["necc_units"], " units of ", key,  "in truck No. ", truck_num, "!", sep='')
+                truck_load.update({key: {"units": value["necc_units"], "value": value["value"] * value["necc_units"], "load_weight": load}})
+                truck_load["actual weight"] += load
+                truck_load["Total value"] += value["necc_units"] * value["value"]
+                value["necc_units"] = 0  # Update warehouse
+            else:
+                max_units = (load_cap - truck_load["actual weight"]) // value["weight"]
+                if max_units >= 1:
+                    print("Fill ", str(max_units), " units of ", key, " in truck No. ", truck_num, sep='')
+                    truck_load.update({key: {"units": max_units, "value": value["value"] * max_units, "load_weight": max_units * value["weight"]}})
+                    truck_load["actual weight"] += max_units * value["weight"]
+                    truck_load["Total value"] += max_units * value["value"]
+                    value["necc_units"] -= max_units  # Update warehouse
+                else:
+                    #print("No place for ", key, ".", sep='')
+                    pass
+        print("Truck No.", truck_num, "total load:")
+        print(truck_load)
+        ys_print_solution(truck_load, truck_num)
+        trucks.append(truck_load)  # funktioniert nicht
+    return trucks
+
+
+def ys_print_solution(truck_load, truck_num):
+    print("\nSolution for truck No.", truck_num)
+    for key, value in truck_load.items():
+        if type(value) == int:
+            print(key, value)
         else:
-            print("Truck is full!")
-            #todo how much of this unit fits the truck
-            return truck_load
-    return truck_load
+            print(key)
+            for key, value in value.items():
+                print(key, value)

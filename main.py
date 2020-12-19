@@ -26,6 +26,7 @@ notebook13[value] -> 40
 # Weight of the driver; one driver per vehicle // unit: kg
 weight_of_driverKG = [72.4, 85.7]
 weight_of_driver = [72400, 85700]
+#weight_of_driver = [85700, 72400]
 
 # Maximal capacity of one transport car // unit: kg
 max_capKG = 1100
@@ -74,8 +75,26 @@ products = {"Notebook Büro 13": {"necc_units": 205, "weight": 2451, "value": 40
 if __name__ == '__main__':
     products = optimization.ys_add_rel_value(products)
     products = optimization.ys_sort_dict(products)
-    truck_load = optimization.ys_load_truck(products, max_cap)
+    truck_load = optimization.ys_load_truck(products, max_cap, weight_of_driver)
+"""
+Solution:
+Truck No. 0:
+{'Total value': 44764, 'Weight capacity': 1100000, 'actual weight': 1099276,
+'Driver weight': 72400,
+'Mobiltelefon Outdoor': {'units': 157, 'value': 9420, 'load_weight': 155116},
+'Mobiltelefon Heavy Duty': {'units': 220, 'value': 14300, 'load_weight': 268400},
+'Mobiltelefon Büro': {'units': 60, 'value': 1800, 'load_weight': 43020},
+'Tablet outdoor groß': {'units': 283, 'value': 19244, 'load_weight': 560340}}
 
+Truck No. 1:
+{'Total value': 29876, 'Weight capacity': 1100000, 'actual weight': 1099555,
+'Driver weight': 85700,
+'Tablet outdoor groß': {'units': 87, 'value': 5916, 'load_weight': 172260},
+'Tablet Büro klein': {'units': 599, 'value': 23960, 'load_weight': 841595}}
+
+Total value: 74640
+(Bei Fahrertausch total value von 74600)
+"""
     # Get the relatives value (value/weight)
     # rel_val = optimization.sorted_relative_value(weights, values)
 
