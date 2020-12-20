@@ -34,9 +34,6 @@ max_cap = 1100000
 
 # Needed hardware
 
-# todo matrix/ numpy array?
-# hardware = np.array(["Notebook Büro 13", 205, 2451, 40], ["Notebook Büro 14", 420, 2978, 35],
-#                     ["Notebook outdoor", 450, 3625, 80], ["Mobiltelefon Büro", 60, 717, 30], [], [], [], [], [], [])
 
 necc_units = {"Notebook Büro 13": 205, "Notebook Büro 14": 420, "Notebook outdoor": 450,
               "Mobiltelefon Büro": 60, "Mobiltelefon Outdoor": 157, "Mobiltelefon Heavy Duty": 220,
@@ -60,22 +57,23 @@ hardware = {"Notebook Büro 13": [205, 2451, 40], "Notebook Büro 14": [420, 297
             "Tablet Büro klein": [620, 1405, 40], "Tablet Büro groß": [250, 1455, 40],
             "Tablet outdoor klein": [540, 1690, 45], "Tablet outdoor groß": [370, 1980, 68]}
 
-products = {"Notebook Büro 13": {"necc_units": 205, "weight": 2451, "value": 40},
-            "Notebook Büro 14": {"necc_units": 420, "weight": 2978, "value": 35},
-            "Notebook outdoor": {"necc_units": 450, "weight": 3625, "value": 80},
-            "Mobiltelefon Büro": {"necc_units": 60, "weight": 717, "value": 30},
-            "Mobiltelefon Outdoor": {"necc_units": 157, "weight": 988, "value": 60},
-            "Mobiltelefon Heavy Duty": {"necc_units": 220, "weight": 1220, "value": 65},
-            "Tablet Büro klein": {"necc_units": 620, "weight": 1405, "value": 40},
-            "Tablet Büro groß": {"necc_units": 250, "weight": 1455, "value": 40},
-            "Tablet outdoor klein": {"necc_units": 540, "weight": 1690, "value": 45},
-            "Tablet outdoor groß": {"necc_units": 370, "weight": 1980, "value": 68}}
+products = {"Notebook Büro 13": {"necc_units": 205, "weight": 2451, "benefit": 40},
+            "Notebook Büro 14": {"necc_units": 420, "weight": 2978, "benefit": 35},
+            "Notebook outdoor": {"necc_units": 450, "weight": 3625, "benefit": 80},
+            "Mobiltelefon Büro": {"necc_units": 60, "weight": 717, "benefit": 30},
+            "Mobiltelefon Outdoor": {"necc_units": 157, "weight": 988, "benefit": 60},
+            "Mobiltelefon Heavy Duty": {"necc_units": 220, "weight": 1220, "benefit": 65},
+            "Tablet Büro klein": {"necc_units": 620, "weight": 1405, "benefit": 40},
+            "Tablet Büro groß": {"necc_units": 250, "weight": 1455, "benefit": 40},
+            "Tablet outdoor klein": {"necc_units": 540, "weight": 1690, "benefit": 45},
+            "Tablet outdoor groß": {"necc_units": 370, "weight": 1980, "benefit": 68}}
 
 # Press the green button in the gutter to run the script.
 if __name__ == '__main__':
-    products = optimization.ys_add_rel_value(products)
-    products = optimization.ys_sort_dict(products)
-    truck_load = optimization.ys_load_truck(products, max_cap, weight_of_driver)
+    products = optimization.add_rel_value(products)
+    products = optimization.sort_dict(products)
+    truck_load = optimization.load_truck(products, max_cap, weight_of_driver)
+    #print(truck_load)
 """
 Solution:
 Truck No. 0:
