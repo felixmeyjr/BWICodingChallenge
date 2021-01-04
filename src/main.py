@@ -1,7 +1,4 @@
-import numpy as np
-import scipy
-
-import optimization
+from src import optimization
 
 """
 obj func = max(sum of value of hardware)
