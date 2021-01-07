@@ -13,15 +13,15 @@ python main.py
 
 ## Ergebnis
 ###Gesamt
-Gesamtnutzen beider Trucks kummuliert: 74640
+Gesamtnutzen beider Trucks aufsummiert: 74640
 
 ###**Truck 1**
 
 Gesamtnutzen: 44764
 
-Gesamtgewicht: 1099.276 kg
+Gesamtgewicht: 1099,276 kg
 
-Gewicht des Fahres: 72.4 kg
+Gewicht des Fahres: 72,4 kg
 
 Geladene Hardware:
 
