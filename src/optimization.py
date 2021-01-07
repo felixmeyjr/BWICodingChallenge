@@ -44,13 +44,12 @@ def load_truck(products, load_cap, driver_weight):
         truck_load = {"total benefit": 0,
                       "weight capacity": load_cap,
                       "current weight": driver_weight[truck_num],
-                      "driver weight": driver_weight[truck_num],
-                      }
+                      "driver weight": driver_weight[truck_num]}
 
         # Iterate over all (sorted) products
         for key, value in products:
             if value["necc_units"] <= 0:
-                print("No units of", key, "available.")
+                # print("No units of", key, "available.")
                 continue
 
             # Calculate total load for one product
@@ -77,7 +76,7 @@ def load_truck(products, load_cap, driver_weight):
                 max_units = (load_cap - truck_load["current weight"]) // value["weight"]
 
                 if max_units >= 1:
-                    print("Fill ", str(max_units), " units of ", key, " in truck No. ", truck_num, sep='')
+                    print("Fill ", str(max_units), " units of ", key, " in truck No. ", truck_num, "!", sep='')
 
                     # Add new item to truck load
                     truck_load.update({key: {"units": max_units,
@@ -90,14 +89,7 @@ def load_truck(products, load_cap, driver_weight):
 
                     # Update products accordingly
                     value["necc_units"] -= max_units
-                else:
-                    #print("No place for ", key, ".", sep='')
-                    pass
 
-        # Print process
-        # print("Truck No.", truck_num, "total load:")
-        # print(truck_load)
-        # print_solution(truck_load, truck_num)
 
         # Add single truck to solution list
         trucks.append(truck_load.copy())
