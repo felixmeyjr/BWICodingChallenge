@@ -1,13 +1,16 @@
 # BWICodingChallenge
-BWI Coding Challenge - Optimization problem for the distribution of hardware
+BWI Coding Challenge 
+
+Autoren: Yannik Strieben und Felix Meyer
 
 ## Algorithmus
-Zunächst wurde der Quotient aus Nutzen und Gewicht bestimmt, um eine Priorisierung der zu beladenen Hardware
-vorzunehmen. In Form einer nested dict wurde die Hardware definiert und nach Priorität sortiert. Anschließend erfolgte
-die Beladung des ersten Trucks. Dabei wurden zunächst die höchst priorisierte Hardware eingeladen, danach die nächst
-höhere priorisierte Hardware. Diese Schritte wurden mit Beachtung der Gewichtsbeschränkung durchgeführt. Für den zweiten
+Zunächst wurde der relative Nutzen als Quotient aus Nutzen und Gewicht bestimmt, um eine Priorisierung der zu beladenen Hardware
+vorzunehmen. In Form eines *nested dict* wurde die Hardware definiert und nach Priorität sortiert. Anschließend erfolgte
+die Beladung des ersten Trucks. Dabei wurde zunächst die höchst priorisierte Hardware eingeladen, danach die Hardware mit 
+dem zweithöchsten Nutzen usw. Diese Schritte wurden mit Beachtung der Gewichtsbeschränkung durchgeführt. Für den zweiten
 Truck erfolgte dieses Vorgehen analog, wobei die bereits im ersten Truck eingeladene Hardware mitberücksichtigt wurde.
-Bei jeder Iteration erfolgte eine Aktualisierung der Last, des Nutzens und der Ladung des jeweiligen Trucks.
+Bei jeder Iteration erfolgte eine Aktualisierung der Last, des Nutzens und der Ladung des jeweiligen Trucks. Ergebnisse 
+weiter unten.
 
 ## Code
 Der Code befindet sich im Ordner [src](../src). Zum Ausführen reicht es den folgenden Befehl 
@@ -32,7 +35,7 @@ Gewicht des Fahres: 72,4 kg
 Geladene Hardware:
 
 
-| Hardware      | Units        | Nutzen | Gewicht in kg
+| Hardware      | Einheiten        | Nutzen | Gewicht in kg
 | ------------- |-------------  | ----- | ----- 
 | Mobiltelefon Outdoor | 157 | 9420 | 155,116
 | Mobiltelefon Heavy Duty | 220      |   14300 | 268,400
@@ -51,7 +54,7 @@ Gewicht des Fahres: 85,7 kg
 Geladene Hardware: 
 
 
-| Hardware      | Units        | Nutzen | Gewicht in kg
+| Hardware      | Einheiten        | Nutzen | Gewicht in kg
 | ------------- |-------------  | ----- | ----- 
 | Tablet outdoor groß | 87 | 5916 | 172,260
 | Tablet Büro klein | 599      |   23960 | 841,595

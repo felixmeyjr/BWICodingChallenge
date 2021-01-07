@@ -38,7 +38,7 @@ def load_truck(products, load_cap, driver_weight):
 
     # Iteration over both trucks (n_trucks = n_driver = len(driver_weight))
     for truck_num in range(len(driver_weight)):
-        print("\nLoad truck No.", truck_num)
+        print("\nLoad truck No.", truck_num+1)
 
         # Initialize dict for storing all necessary values dependent of truck_num
         truck_load = {"total benefit": 0,
@@ -57,9 +57,9 @@ def load_truck(products, load_cap, driver_weight):
 
             # Check if load of one product fits into total load capacity
             if truck_load["current weight"] + load <= load_cap:
-                print("Fill all ", value["necc_units"], " units of ", key,  "in truck No. ", truck_num, "!", sep='')
+                print("Fill all ", value["necc_units"], " units of ", key,  "in truck No. ", truck_num+1, "!", sep='')
 
-                # Add new item to truck load todo rework this maybe
+                # Add new item to truck load
                 truck_load.update({key: {"units": value["necc_units"],
                                          "benefit": value["benefit"] * value["necc_units"],
                                          "load_weight": load}})
@@ -76,7 +76,7 @@ def load_truck(products, load_cap, driver_weight):
                 max_units = (load_cap - truck_load["current weight"]) // value["weight"]
 
                 if max_units >= 1:
-                    print("Fill ", str(max_units), " units of ", key, " in truck No. ", truck_num, "!", sep='')
+                    print("Fill ", str(max_units), " units of ", key, " in truck No. ", truck_num+1, "!", sep='')
 
                     # Add new item to truck load
                     truck_load.update({key: {"units": max_units,
