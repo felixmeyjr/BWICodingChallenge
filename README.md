@@ -13,7 +13,7 @@ Bei jeder Iteration erfolgte eine Aktualisierung der Last, des Nutzens und der L
 weiter unten.
 
 ## Code
-Der Code befindet sich im Ordner [src](../src). Zum Ausführen reicht es den folgenden Befehl 
+Der Code befindet sich im Ordner [src](src). Zum Ausführen reicht es den folgenden Befehl 
 im Hauptverzeichnis des Repository auszuführen.
 
 ```shell script
