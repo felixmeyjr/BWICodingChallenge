@@ -2,6 +2,12 @@
 BWI Coding Challenge - Optimization problem for the distribution of hardware
 
 ## Algorithmus
+Zunächst wurde der Quotient aus Nutzen und Gewicht bestimmt, um eine Priorisierung der zu beladenen Hardware
+vorzunehmen. In Form einer nested dict wurde die Hardware definiert und nach Priorität sortiert. Anschließend erfolgte
+die Beladung des ersten Trucks. Dabei wurden zunächst die höchst priorisierte Hardware eingeladen, danach die nächst
+höhere priorisierte Hardware. Diese Schritte wurden mit Beachtung der Gewichtsbeschränkung durchgeführt. Für den zweiten
+Truck erfolgte dieses Vorgehen analog, wobei die bereits im ersten Truck eingeladene Hardware mitberücksichtigt wurde.
+Bei jeder Iteration erfolgte eine Aktualisierung der Last, des Nutzens und der Ladung des jeweiligen Trucks.
 
 ## Code
 Der Code befindet sich im Ordner [src](../src). Zum Ausführen reicht es den folgenden Befehl 
